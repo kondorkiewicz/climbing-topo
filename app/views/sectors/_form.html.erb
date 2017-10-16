@@ -1,5 +1,6 @@
-<%= form_with model: @sector, local: true, url: crag_sectors_path(@crag) do |form| %>
-  <%= form.text_field :name %>
+<%= form_with model: [@crag, @sector], local: true, html: {multipart: true} do |form| %>
+  <p><%= form.text_field :name %></p>
   <%= form.hidden_field :crag_id, value: params[:id] %>
-  <%= form.submit %>
+  <p><%= form.file_field :image %></p>
+  <p><%= form.submit %></p>
 <% end %>

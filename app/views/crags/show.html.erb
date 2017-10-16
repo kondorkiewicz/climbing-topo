@@ -2,7 +2,7 @@
 <h2>Sectors</h2>
 <ul>
   <% @crag.sectors.each do |sector| %>
-    <li><%= link_to "#{sector.name}", crag_sector_path(sector) %></li>
+    <li><%= link_to "#{sector.name}", crag_sector_path(@crag, sector) %></li>
   <% end %>
 </ul>
 

@@ -1,2 +1,6 @@
-<h1><%= @sector.name %></h1>
-<h2>Crag: <%= @sector.crag.name %></h2>
+<h2>Crag: <%= link_to "#{@sector.crag.name}", crag_path(@sector.crag) %></h2>
+
+<h1 id="sector_name"><%= @sector.name %> </h1>
+<%= link_to "Edit", edit_crag_sector_path(@sector.crag.id, @sector) %>
+<br />
+<%= image_tag @sector.image_url.to_s %>

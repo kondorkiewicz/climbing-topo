@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+#sector_name {
+  display: inline;
+}
