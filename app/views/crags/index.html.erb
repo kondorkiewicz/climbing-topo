@@ -1,0 +1,9 @@
+<h1>Crags</h1>
+  <ul>
+    <% @crags.each do |crag| %>
+      <li><%= link_to "#{crag.name}", crag_path(crag) %></li>
+    <% end %>
+  </ul>
+
+<h2>Add new crag</h2>
+<%= render 'form' %>

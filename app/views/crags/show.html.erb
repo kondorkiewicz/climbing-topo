@@ -1,0 +1,12 @@
+<h1><%= @crag.name %></h1>
+<h2>Sectors</h2>
+<ul>
+  <% @crag.sectors.each do |sector| %>
+    <li><%= link_to "#{sector.name}", crag_sector_path(sector) %></li>
+  <% end %>
+</ul>
+
+<h2>Add sector</h2>
+<%= render 'sectors/form' %>
+
+<%= link_to 'Crags', crags_path %>
