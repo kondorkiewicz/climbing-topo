@@ -1,0 +1,10 @@
+if($('#save').length === 0) {
+  $('<button/>', {
+    text: 'save',
+    id: 'save',
+    class: 'btn btn-primary',
+    'data-ajax': "<%= route_path(params[:id]) %>",
+    'data-dismiss': 'modal'
+  }).appendTo('.modal-footer');
+  $("#save").click(saveRoute);
+}

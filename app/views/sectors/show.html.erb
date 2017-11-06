@@ -1,12 +1,43 @@
 <h2>Crag: <%= link_to "#{@sector.crag.name}", crag_path(@sector.crag) %></h2>
 
-<h1 id="sector_name"><%= @sector.name %> </h1>
-<%= link_to "Edit", edit_crag_sector_path(@sector.crag.id, @sector) %>
-<br />
+<div class="row">
+  <div class="col">
+    <h1 id="sector_name"><%= @sector.name %> </h1>
+    <%= link_to "Edit", edit_crag_sector_path(@sector.crag.id, @sector) %>
+    <br />
 
-<canvas  id="canvas" width="600" height="600" style="border: 1px solid #000;">
-  Your browser does not support canvas element.
-</canvas>
+      <div id="canvas_container">
+        <canvas id="sector"
+                width="<%= @sector.image.width %>"
+                height="<%= @sector.image.height %>"
+                style="border: solid 1px #000"
+                data-img="<%= @sector.image_url.to_s %>"
+                data-routes="<%= @sector.routes.to_json %>"
+        </canvas>
+      </div>
+    </div>
+  <div class="col">
+    <div id="route_form">
+      <h2>Add Route</h2>
+      <%= render 'routes/form' %>
+    </div>
 
+    <div id="sector_routes" style="clear: both;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Routes</h3>
+        </div>
+        <ul class="list-group">
+          <%= render partial: 'routes/route', collection: @sector.routes %>
+        </ul>
+      </div>
 
-<script type="text/javascript" src="/javascripts/zoom.js"></script>
+    </div>
+  </div>
+<!-- Modal -->
+<div id="route_modal">
+  <%= render 'routes/route_modal' %>
+</div>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.19/fabric.min.js"></script>
+<script src="/assets/javascripts/canvas.js"></script>

@@ -1,0 +1,14 @@
+<div class="list-group-item">
+
+    <%= route.name %>
+
+    <%= route.grade %>
+
+
+  <div id="draw_route">
+    <%= button_to 'Draw', edit_route_path(route), method: :get, id: "draw_route",
+          class: 'btn btn-link',
+          'data-toggle': 'modal', 'data-target': "#myModal", remote: true %>
+  </div>
+  <%= link_to 'Delete', route_path(route), method: :delete %>
+</div>

@@ -1,7 +1,8 @@
 <h1>Crags</h1>
   <ul>
     <% @crags.each do |crag| %>
-      <li><%= link_to "#{crag.name}", crag_path(crag) %></li>
+      <li><%= link_to "#{crag.name}", crag_path(crag) %>
+          (sectors: <%= crag.sectors.size %>)</li>
     <% end %>
   </ul>
 

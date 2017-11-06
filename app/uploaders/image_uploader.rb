@@ -21,9 +21,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
+  process :store_dimensions
   # Process files as they are uploaded:
-  # process scale: [200, 300]
+  process :resize_to_fit => [400, 10000]
   #
   # def scale(width, height)
   #   # do something
@@ -33,6 +33,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_limit: [400, 400]
   end
+
+  private
+
+  def store_dimensions
+    if file && model
+      img = ::Magick::Image::read(file.file).first
+      model.width = img.columns
+      model.height = img.rows
+    end
+  end 
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

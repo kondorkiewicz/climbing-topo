@@ -1,2 +1,9 @@
 <h1>Edit <%= @sector.name %></h1>
 <%= render 'form' %>
+
+<div id="canvas_container" data-img="<%= @sector.image_url.to_s %>"></div>
+
+<button id='save' data-ajax="<%= crag_sector_routes_path(@crag, @sector) %>"
+  data-sector-id="<%= @sector.id %>">Save</button>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.19/fabric.min.js"></script>
+<script src="/assets/javascripts/drawRoute.js"></script>

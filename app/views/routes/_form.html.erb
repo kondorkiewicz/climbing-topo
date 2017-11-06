@@ -1,0 +1,12 @@
+<%= form_for Route.new, url: { controller: 'routes', action: 'create' }, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :grade %>
+    <%= f.text_field :grade %>
+  </div>
+  <%= f.hidden_field :sector_id, value: @sector.id %>
+  <%= f.submit 'Add', class: "btn btn-primary", id: 'add_route' %>
+<% end %>

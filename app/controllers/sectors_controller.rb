@@ -3,10 +3,12 @@ class SectorsController < ApplicationController
 
   def create
     sector = Sector.create(sector_params)
-    redirect_to crag_sector_path(sector)
+    crag = Crag.find(params[:crag_id])
+    redirect_to crag_sector_path(crag, sector)
   end
 
   def show
+    
   end
 
   def edit
