@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ #map {
+        height: 400px;
+        width: 400px;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
  body {
    padding-top: 5rem;
  }

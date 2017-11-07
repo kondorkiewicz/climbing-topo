@@ -1,4 +1,5 @@
 <h1><%= @crag.name %></h1>
+<div id="map", data-marker="<%= @crag.marker %>"></div>
 <h2>Sectors</h2>
 <ul>
   <% @crag.sectors.each do |sector| %>
@@ -7,7 +8,25 @@
   <% end %>
 </ul>
 
+
 <h2>Add sector</h2>
 <%= render 'sectors/form' %>
 
 <%= link_to 'Crags', crags_path %>
+<script>
+function initMap() {
+var mark = $('#map').data('marker');
+  var point = {lat: mark.lat, lng: mark.lng};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: point
+  });
+  var marker = new google.maps.Marker({
+    position: point,
+    map: map
+  });
+}
+   </script>
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2hKZ1elA8sZnU67r3kG1uqukhNBtpeHM&callback=initMap">
+   </script>

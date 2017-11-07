@@ -7,9 +7,7 @@ class CragsController < ApplicationController
 
   def create
     crag = Crag.create(crag_params)
-    respond_to do |format|
-      format.html { redirect_to crag_path(crag) }
-    end
+    render js: "window.location = '#{crag_path(crag)}'"
   end
 
   def show
@@ -20,7 +18,7 @@ class CragsController < ApplicationController
   private
 
   def crag_params
-    params.require(:crag).permit(:name)
+    params.require(:crag).permit(:name, :marker)
   end
 
 end

@@ -1,0 +1,22 @@
+<h2>Add new crag</h2>
+<div id="map"></div>
+<div style="display: none;">
+<div id="form">
+     <table>
+     <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
+     <tr>
+       <td>Type:</td> <td><select id='type'> +
+                <option value='sport' SELECTED>sport</option>
+                <option value='boulder'>boulder</option>
+                </select> </td></tr>
+                <tr><td></td>
+                <td><input type='button' value='Save', onclick='saveCrag()'/></td></tr>
+     </table>
+   </div>
+   <div id="message">Location saved</div>
+</div>
+
+<script src="/assets/javascripts/map.js"></script>
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2hKZ1elA8sZnU67r3kG1uqukhNBtpeHM&callback=initMap">
+   </script>

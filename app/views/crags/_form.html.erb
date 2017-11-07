@@ -1,4 +1,5 @@
-<%= form_with model: @crag, local: true do |form| %>
-  <%= form.text_field :name %>
+<%= form_with model: @crag, id: 'form', local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   <%= form.submit %>
 <% end %>
