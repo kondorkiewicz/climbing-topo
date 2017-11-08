@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+  before_action :set_route, only: [:edit, :update, :destroy]
+
 
   def create
     @route = Route.create(route_params)
@@ -10,19 +12,18 @@ class RoutesController < ApplicationController
   end
 
   def edit
-    @route = Route.find(params[:id])
     respond_to do |format|
       format.js
     end
   end
 
   def update
-    @route = Route.find(params[:id])
     @route.update(route_params)
+    @route.sector.update_routes_numbers
+    render js: "window.location = '#{sector_path(@route.sector)}'"
   end
 
   def destroy
-    @route = Route.find(params[:id])
     @sector = @route.sector
     if @route.destroy
       respond_to do |format|
@@ -32,6 +33,10 @@ class RoutesController < ApplicationController
   end
 
   private
+
+  def set_route
+    @route = Route.find(params[:id])
+  end
 
   def route_params
     params.require(:route).permit(:name, :grade, :coords, :sector_id)

@@ -48,11 +48,11 @@ function saveRoute() {
     type: 'PUT',
     data: { route: { coords: JSON.stringify(points), route_id: $(this).data('route-id') } }
   });
-  window.location.reload();
 }
 
 function showRoutes(canvas) {
   var routes = $('#sector').data('routes');
+  console.log(routes);
   routes.forEach(function(route) {
     var objects = [];
     var coords = JSON.parse(route.coords);
@@ -90,6 +90,10 @@ function showRoutes(canvas) {
       width: 15, height: 15, left: start.x, top: start.y, fill: '#000',
       originX: 'center', originY: 'center', opacity: 0.7, selectable: false,
       hoverCursor: 'auto'
+    }));
+    canvas.add(new fabric.Text('' + route.number, {
+      left: start.x, top: start.y, originX: 'center', originY: 'center',
+      fill: 'white', fontSize: 12, fontWeight: 'bold', selectable: false
     }));
   });
 }

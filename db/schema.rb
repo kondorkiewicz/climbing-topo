@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107110733) do
+ActiveRecord::Schema.define(version: 20171108084941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171107110733) do
     t.bigint "sector_id"
     t.string "coords", default: "[]"
     t.string "grade"
+    t.integer "number", default: 1
     t.index ["sector_id"], name: "index_routes_on_sector_id"
   end
 
